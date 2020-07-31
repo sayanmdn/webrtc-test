@@ -27,9 +27,9 @@ btnGoRoom.onclick = () =>{
                 localStream = stream
                 localVideo.srcObject = stream
             })
-            .catch(err =>{
-                console.log('An errpor detected', err)
-            })
+            // .catch(err =>{
+            //     console.log('An errpor detected', err)
+            // })
         divSelectRoom.style = "display:none"
         divConsultingRoom.style = "display:block"
     }
