@@ -1,7 +1,7 @@
 let divSelectRoom = document.getElementById("selectRoom")
 let divConsultingRoom = document.getElementById("consultingroom")
 let inputRoomNumber = document.getElementById("roomNumber")
-let btnGoVideo = document.getElementById("goRoom")
+let btnGoRoom = document.getElementById("goRoom")
 let localVideo = document.getElementById("localVideo")
 let remoteVideo = document.getElementById("remoteVideo")
 
@@ -17,4 +17,20 @@ const iceServer = {
 const streamConstraints = {
     audio:true,
     video: true
+}
+btnGoRoom.onclick = () =>{
+    if(inputRoomNumber.value === ''){
+        alert('Please type a room number')
+    } else {
+        navigator.mediaDevices.getUserMedia(streamConstraints)
+            .then(stream =>{
+                localStream = stream
+                localVideo.srcObject = stream
+            })
+            .catch(err =>{
+                console.log('An errpor detected', err)
+            })
+        divSelectRoom.style = "display:none"
+        divConsultingRoom.style = "display:block"
+    }
 }
