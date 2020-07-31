@@ -1,5 +1,5 @@
 let divSelectRoom = document.getElementById("selectRoom")
-let divConsultingRoom = document.getElementById("consultingroom")
+let divConsultingRoom = document.getElementById("consultingRoom")
 let inputRoomNumber = document.getElementById("roomNumber")
 let btnGoRoom = document.getElementById("goRoom")
 let localVideo = document.getElementById("localVideo")
@@ -27,9 +27,9 @@ btnGoRoom.onclick = () =>{
                 localStream = stream
                 localVideo.srcObject = stream
             })
-            // .catch(err =>{
-            //     console.log('An errpor detected', err)
-            // })
+            .catch(err =>{
+                console.log('An errpor detected', err)
+            })
         divSelectRoom.style = "display:none"
         divConsultingRoom.style = "display:block"
     }
