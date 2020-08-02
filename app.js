@@ -24,6 +24,7 @@ io.on('connection', socket =>{
         if(numClients==0){
             socket.join(room)
             socket.emit('created', room)
+            console.log('new room')
         } else if (numClients == 1){
             socket.join(room)
             socket.emit('joined', room)
