@@ -16,7 +16,8 @@ http.listen(port, () => {
 io.on('connection', socket => {
     console.log('a user connected')
 
-    socket.on('create or join to the room', room => {
+    socket.on('create or join', room => {
+        console.log('create or join to the room', room)
         const myRoom = io.sockets.adapter.rooms[room] || { length: 0 }
         const numClients = myRoom.length
         console.log(room, 'has', numClients, 'clients')
