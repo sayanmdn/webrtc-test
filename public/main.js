@@ -41,3 +41,17 @@ socket.on('created', room => {
             console.log('An error detected', err)
         })
 })
+
+// receiving the audio and video stream from another peer 
+
+// socket.on('joined', room => {
+//     navigator.mediaDevices.getUserMedia(streamConstraints)
+//         .then(stream => {
+//             localStream = stream
+//             localVideo.srcObject = stream
+//             isCaller = true
+//         })
+//         .catch(err => {
+//             console.log('An error detected', err)
+//         })
+// })
