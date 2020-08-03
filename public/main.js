@@ -20,7 +20,7 @@ const streamConstraints = {
 }
 const socket = io()
 btnGoRoom.onclick = function() {
-    console.log('Button CLicked')
+    // console.log('Button CLicked')
     if (inputRoomNumber.value === '') {
         alert('Please type a room number')
     } else {
