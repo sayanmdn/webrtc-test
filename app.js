@@ -9,40 +9,40 @@ let io = require('socket.io')(http)
 
 app.use(express.static('public'))
 
-http.listen(port, ()=>{
+http.listen(port, () => {
     console.log('listening on', port)
 })
 
-io.on('connection', socket =>{
+io.on('connection', socket => {
     console.log('a user connected')
 
-    socket.on('create or join to the room', room =>{
-        const myRoom = io.sockets.adapter.rooms[room] || {length: 0}
-        const numClients = myRoom.length 
+    socket.on('create or join to the room', room => {
+        const myRoom = io.sockets.adapter.rooms[room] || { length: 0 }
+        const numClients = myRoom.length
         console.log(room, 'has', numClients, 'clients')
-        
-        if(numClients==0){
+
+        if (numClients == 0) {
             socket.join(room)
             socket.emit('created', room)
             console.log('new room')
-        } else if (numClients == 1){
+        } else if (numClients == 1) {
             socket.join(room)
             socket.emit('joined', room)
         } else {
             socket.emit('full', room)
         }
     })
-    socket.on('ready',room =>{
+    socket.on('ready', room => {
         socket.broadcast.to(room).emit('ready')
     })
-    socket.on('candidate', event =>{
-        socket.broadcast.to(event.room).emit('candidate',event)
+    socket.on('candidate', event => {
+        socket.broadcast.to(event.room).emit('candidate', event)
     })
-    socket.on('offer', event =>{
+    socket.on('offer', event => {
         socket.broadcast.to(event.room).emit(event.sdp)
     })
-    socket.on('answer', event =>{
+    socket.on('answer', event => {
         socket.broadcast.to(event.room).emit('answer', event.sdp)
     })
-        
+
 })

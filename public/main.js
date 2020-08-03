@@ -9,18 +9,18 @@ let roomNumber, localStream, remoteStream, rtcPeerConnection, isCaller
 
 const iceServer = {
     'iceServer': [
-        {'urls':'stun:stun.services.mozilla.com'},
-        {'urls':'stun:stun.l.google.com:19302'}
-    ] 
+        { 'urls': 'stun:stun.services.mozilla.com' },
+        { 'urls': 'stun:stun.l.google.com:19302' }
+    ]
 }
 
 const streamConstraints = {
-    audio:true,
+    audio: true,
     video: true
 }
 const socket = io()
-btnGoRoom.onclick = () =>{
-    if(inputRoomNumber.value === ''){
+btnGoRoom.onclick = () => {
+    if (inputRoomNumber.value === '') {
         alert('Please type a room number')
     } else {
         roomNumber = inputRoomNumber.value
@@ -29,14 +29,14 @@ btnGoRoom.onclick = () =>{
         divConsultingRoom.style = "display:block"
     }
 }
-socket.on('create or join', room =>{
+socket.on('create or join', room => {
     navigator.mediaDevices.getUserMedia(streamConstraints)
-        .then(stream =>{
+        .then(stream => {
             localStream = stream
             localVideo.srcObject = stream
             isCaller = true
         })
-        .catch(err =>{
+        .catch(err => {
             console.log('An errpor detected', err)
         })
 })
