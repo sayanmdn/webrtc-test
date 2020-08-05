@@ -108,3 +108,7 @@ function onAddStream (event){
     remoteVideo.srcObject = event.streams[0]
     remoteStream = event.streams[0]
 }
+
+function onIceCandidate (event){
+    
+}
